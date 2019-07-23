@@ -15,9 +15,13 @@ class StreamEdit extends React.Component {
     }
     render() {
 	console.log("blender render");
-	return (<div><h3>Edit a stream</h3>
+	if (!this.props.stream) {
+	    return('<div>Loading</div>');
+	} else {
+		return (<div><h3>Edit a stream</h3>
 		<StreamForm initialValues={_.pick(this.props.stream, ['title', 'description'])} onSubmit={this.onSubmit} /></div>
 	       );
+	}
     }
 }
 const mapStateToProps = (state, props) => {
